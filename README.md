@@ -1,6 +1,4 @@
-# elixir-playground
-Playground for Elixir 👨‍🔬
-
+Repository to serve as a playground for Elixir 👨‍🔬
 
 ### About Elixir
 ##### Elixir is a dynamic, functional language for building scalable and maintainable applications.
