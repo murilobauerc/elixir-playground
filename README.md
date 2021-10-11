@@ -8,7 +8,7 @@ Elixir leverages the Erlang VM, known for running low-latency, distributed, and 
 
 * [Installation](#installation)
     * [LTS releases](#lts-releases)
-* [Documentation and latest releases](#docs)
+* [Documentation](#docs)
 * [First Steps](#first-steps)
 
 
