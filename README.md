@@ -7,6 +7,7 @@ Elixir leverages the Erlang VM, known for running low-latency, distributed, and 
 # Table of contents
 
 * [Installation](#installation)
+    * [LTS releases](#lts-releases)
 * [Documentation and latest releases](#docs)
 * [First Steps](#first-steps)
 
@@ -15,8 +16,11 @@ Elixir leverages the Erlang VM, known for running low-latency, distributed, and 
 ## Installation
 <https://elixir-lang.org/install.html>
 
-## Docs
+### LTS Releases
 <https://elixir-lang.org/docs.html>
+
+## Docs
+<https://hexdocs.pm/elixir/Kernel.html>
 
 ## First steps
 [Elixir School lessons](https://elixirschool.com/pt/lessons/basics/basics#)
