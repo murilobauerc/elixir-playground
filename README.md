@@ -10,22 +10,7 @@ Elixir leverages the Erlang VM, known for running low-latency, distributed, and 
     * [LTS releases](#lts-releases)
 * [Documentation](#docs)
 * [First Steps](#first-steps)
-   * Basics
-      * Getting Started
-      * Installing Elixir
-      * Trying Interactive Mode
-      * Basic Data Types
-      * Integers
-      * Floats
-      * Booleans
-      * Atoms
-      * Strings
-      * Basic Operations
-      * Arithmetic
-      * Boolean
-      * Comparison
-      * String Interpolation
-      * String Concatenation
+   * [Basics](#basics)
 
 ## Installation
 <https://elixir-lang.org/install.html>
@@ -38,4 +23,7 @@ Elixir leverages the Erlang VM, known for running low-latency, distributed, and 
 
 ## First steps
 [Elixir School lessons](https://elixirschool.com/pt/lessons/basics/basics#)
+
+### Basics
+<https://elixirschool.com/en/lessons/basics/basics>
 
