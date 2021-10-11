@@ -28,5 +28,5 @@ Elixir leverages the Erlang VM, known for running low-latency, distributed, and 
 ### Basics
 <https://elixirschool.com/en/lessons/basics/basics>
 
-## Scripted Mode (.exs)
+## Scripted Mode
 <https://elixir-lang.org/getting-started/modules-and-functions.html#scripted-mode>
