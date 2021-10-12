@@ -1,4 +1,4 @@
-# Lists, tuples, maps on Elixir
+# Lists, tuples, keyword lists, and maps.
 # List syntax []
 # Tuples syntax {}
 # Maps syntax %{}
