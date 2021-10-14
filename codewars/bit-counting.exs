@@ -20,5 +20,17 @@ defmodule CountBits do
   end
 end
 
+#2 Alternative solution with pipe operator (better code)
 
+"""This operator introduces the expression on the left-hand side as the first argument to the function call on the right-hand side.
+Examples
+iex> [1, [2], 3] |> List.flatten()
+[1, 2, 3]
+"""
 
+def module CountBits do
+  def bits(n) do
+    n 
+    |> Integer.to_string(2)
+    |> String.graphemes()
+    |> Enum.count(& &1 === "1")
