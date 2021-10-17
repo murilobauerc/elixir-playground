@@ -36,8 +36,8 @@ end
 
 x = 1
 case 10 do
-    ^x -> IO.puts "Won't match"
-    _ -> IO.puts "Will match"
+    ^x -> IO.puts "Variable #{x} Won't match"
+    _ -> IO.puts "Variable #{x} Will match"
 end
 
 
