@@ -4,6 +4,11 @@ Repository to serve as a playground for Elixir. 👨‍🔬
 Elixir is a dynamic, functional language for building scalable and maintainable applications.
 Elixir leverages the Erlang VM, known for running low-latency, distributed, and fault-tolerant systems.
 
+### Environment setup for Elixir
+- VSCode IDE 1.61.1
+- ElixirLS extension to include Elixir support and debugger
+>  For Elixir Language Server (Elixir LS) install the extension: https://marketplace.visualstudio.com/items?itemName=JakeBecker.elixir-ls
+
 # Table of contents
 
 * [Installation](#installation)
