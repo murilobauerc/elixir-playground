@@ -56,7 +56,7 @@ IO.inspect(map[:foo])
 
 IO.inspect(map["hello"])
 
-# Maps with only atom keys 
+# Maps with only atom keys
 
 only_atom_keys_map = %{fruit: "banana", second_fruit: "apple"}
 generic_map = %{:fruit => "banana", :second_fruit => "apple"}

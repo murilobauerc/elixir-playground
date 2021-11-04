@@ -1,5 +1,5 @@
 _ = """
-technique that allows us to extract 
+technique that allows us to extract
 simpler substructures from complicated data structures like lists, tuples, maps, etc.
 """
 
