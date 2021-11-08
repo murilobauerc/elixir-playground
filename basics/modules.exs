@@ -41,3 +41,51 @@ end
 defmodule Example.User do
   defstruct name: "Sean", roles: []
 end
+
+# import modules
+import List
+
+[1,2,3] |> last() |> IO.inspect() # using pipe
+
+IO.inspect(last([4,5,6]))
+
+
+# filtering modules with :only and :except
+# import List, only: [last: 1]
+# [1,2,3] |> first() |> IO.inspect() # ERROR, only last() function is available
+
+
+import List, except: [last: 1]
+[1,2,3] |> first() |> IO.inspect()
+
+
+# importing only atoms :functions and :macros
+import List, only :functions
+import List, only :macros
+
+
+# using require
+
+defmodule Example do
+  require SuperMacros
+
+  SuperMacros.do_stuff
+end
+
+
+
+# macro `use`
+defmodule Hello do
+  defmacro __using__(_opts) do
+    quote do
+      def hello(name), do: "Hi, #{name}"
+    end
+  end
+end
+
+
+defmodule Example do
+  use Hello
+end
+
+IO.inspect(Example.hello())
