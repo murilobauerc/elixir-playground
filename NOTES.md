@@ -171,7 +171,7 @@ Elixir:
    Pattern Matching
    	
 	{a, b, c} = {:murilo, 23, "1998"}
-	iex (1) > a
+	iex(1) > a
 	:murilo
 	
 	iex(1) > b
@@ -192,3 +192,173 @@ Elixir:
 	
 	iex(5) > cauda
 	[2,3]
+
+   Underscore _
+   
+   	{x,y} = {25,35}
+	# Mas e se eu nao quiser utilizar o valor 25 e associar na memória para y? Preciso alocar e jogar memória "fora" para y?
+	
+	Solução: 
+	{x, _} = {25,35}
+	
+	{x, _} = {25,1203}
+	
+	# x será 25.
+	# y será 35, pois utilizou o underscore para ignorar o próximo valor (1203).
+	
+    
+   Pin Operator
+    
+        iex(1) > x = 23
+	23
+	
+	iex(2) > x = 101
+	101
+
+	Variável x começou apontando para 23 na memoria, mas logo apos foi feito o rebinding para 101. 
+	O que fazer para evitar reassociacao/rebinding? 
+	Resposta: PIN OPERATOR (ˆ)
+
+	iex(3) > ˆx = 45
+	** (MatchError) no match of right hand side value: 45
+
+	Utilidade: Pin Operator + Pattern Matching
+
+	{x,y} = {23, 90}
+
+	iex(4) > x
+	23
+
+	iex(5) > y
+	90
+
+	{x,ˆy} = {12, 67}
+	** (MatchError) no match of right hand side value: {12,67}
+
+	
+   String Matching
+   
+   	- Correspondencia de padrões com string.
+	
+	iex(1) > "Authentication: " <> credentials = "Authentication: Basic dXN01239Maldk0DkaMD" 
+	"Authentication: Basic dXN01239Maldk0DkaMD"
+	
+	iex(2) > credentials
+	"Basic dXN01239Maldk0DkaMD"
+			
+	iex(3) > "Content-Type: " <> content_type = "Content-Type text/html; charset=UTF-8"
+	"Content-Type: text/html; charset=UTF-8"
+	
+	iex(4) > content_type
+	"text/html; charset=UTF-8"
+	
+   Listas
+ 
+	- Listas sao delimitadas por [].
+	- Listas sao encadeadas, portanto nao possuem indexação.
+	- É trabalhado com cabeça e cauda (hd/1, tl/1).
+	
+	iex(1) > minha_lista = ["murilo", "bauer", "cardoso"]
+	iex(2) > hd(minha_lista)
+	"murilo"
+	
+	iex(3) > tl(minha_lista)
+	["bauer", "cardoso"]
+  	
+	
+   Tuplas
+	
+	- Tuplas sao delimitadas por {}.
+	- Tuplas sao indexáveis. (Posição 0,1,2,3....)
+	- Pode-se acessar atraves de elem/2 e sua posição.
+	
+	iex(1) > minha_tupla = {2006,2010}
+	iex(2) > elem(minha_tupla, 1)
+	2010
+	
+   Keyword Lists
+	 
+	"A keyword list is a list of two-element tuples where the first element of each tuple is an atom."
+		
+	- Keyword Lists devem possuir átomos como chave
+	- OBRIGATORIAMENTE a chave deve ser um átomo.
+	- Nas keyword lists, a ordem das chaves importa.
+	- Nas kwd lists, pode possuir chaves repetidas.
+	
+	iex(1) > [{:a, 22}, {:b, 77}] == [a: 22, b:77]
+	true
+	
+	iex(2) > minha_keyword_list = [a: 10, b: 45]
+	[a: 10, b: 45]
+	
+	iex(3) > minha_keyword_list[:a]
+	10
+	
+	- Permite chaves repetidas (pois é uma lista), porém retornará apenas o primeiro key-value:
+	x = [a: 22, b: 35, a: 99]
+	iex(1) > x[:a]
+	22
+	
+   Maps
+	
+	- Maps são delimitados por %{}
+	- Maps são indexados.
+	- Não são permitidas chaves repetidas.
+	- A chave pode ser qualquer tipo de dado.
+	
+	m = %{:a => 1, 2 => :b}
+	n = %{"z" => 5, 8 => true}
+	
+	iex(1) > m[2]
+	:b
+	
+	iex(2) > n["z"]
+	5
+	
+	- É possivel acessar as chaves do tipo átomo através da sintaxe do ponto. 
+	iex(1) > x = %{ :a => "murilo", :b => "bauer"}
+	x = %{ :a => "murilo", :b => "bauer"}
+	
+	iex(2) > x.a
+	"murilo"
+	
+	iex(3) > x.b
+	"bauer"
+	
+    
+   Múltiplas Definições de Funções 
+   
+   	- Podem ser definidas funções com o mesmo nome no módulo.
+	
+	defmodule Greetings do
+		def good_morning(), do: "Good Morning"		
+
+		def good_morning(name), do: "Good Morning, #{name}"
+
+		def good_evening(), do: "Good Evening"	
+
+		def good_evening(name), do: "Good Evening, #{name}"
+		
+   Controlando fluxo com funções 
+   
+   	- Como controlar fluxos condicionais com funções? COM PATTERN MATCHING.
+	- Exemplo do maior numero:
+		
+		defmodule Compara do
+			def maior(n1,n2) do
+				check(n1 >= n2, n1,n2)
+			end
+		
+		defp check(true, n1, _) do: n1
+		defp check(false, _, n2) do: n2
+	
+	iex(1) > Compara.maior(6,9)
+	9
+	
+	iex(2) > Compara.maior(16,9)
+	16
+	
+	
+	
+
+	
