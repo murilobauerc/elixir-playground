@@ -159,3 +159,36 @@ Elixir:
   	
 	Elixir trata as funcoes como first-class functions, ou seja, trata as funções como valores que você pode, inclusive, atribuir a uma variável.
 	Higher-order functions são funções que trabalham com outras funções, podendo também retorná-las.
+	
+   Match operator
+   
+  	`=` não é um operador de atribuição no Elixir, como nas outras linguagens.
+	O match operator (=) é um operador binário que necessita de dois elementos para serem avaliados (um de cada lado).
+	
+	left hand \/   \/ right hand
+	          x  =  1
+	
+   Pattern Matching
+   	
+	{a, b, c} = {:murilo, 23, "1998"}
+	iex (1) > a
+	:murilo
+	
+	iex(1) > b
+	23
+	
+	iex(2) > c 
+	1998
+	
+	# No caso de erros/excecoes
+	{d,e} = {"sumup", "SP", 2}
+	** (Match error) no match of right hand side value: {"sumup", "SP", 2}
+	
+	iex(3) > [cabeca | cauda] = [1,2,3]
+	[1,2,3]
+	
+	iex(4) > cabeca
+	1
+	
+	iex(5) > cauda
+	[2,3]
