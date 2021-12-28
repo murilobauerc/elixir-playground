@@ -140,5 +140,22 @@ Elixir:
 	
 	Funcao sendo chamada por parametro como qualquer outro valor.
 	
+ Higher-Order Function
+ 	
+	High-order function é uma funcao que pode receber uma funcao como argumento ou retornar uma funcao.
+	PS: Order functions é o contraste de high-order functions, pois nao podem receber funções como argumento.
 	
+	defmodule Salario do
+		def calculo_do_bonus(porcentagem) do
+			fn(salario) -> salario * porcentagem end     # retornando a funcao
+		end
+	end
 	
+	bonus_para_gerente = Salario.calculo_do_bonus(1.05)
+	bonus_para_gerente.(1000)
+	# => 1050
+	
+  First-Class Functions vs Higher-Order functions
+  	
+	Elixir trata as funcoes como first-class functions, ou seja, trata as funções como valores que você pode, inclusive, atribuir a uma variável.
+	Higher-order functions são funções que trabalham com outras funções, podendo também retorná-las.
