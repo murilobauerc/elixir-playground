@@ -418,3 +418,187 @@ Elixir:
 			defp factorial_of(0, acc) do: acc
 			defp factorial_of(n, acc) when n > 0, do: factorial_of(n-1, n * acc)
 		end
+
+   Funções Puras
+   
+	- Funções puras, sempre retornam os mesmo resultados (input == output). Evita qualquer side effect
+	
+	- Exemplo de função pura:
+	iex > total = fn a,b -> a * b/100 end
+	iex > total.(100,8)
+	8.0
+	
+	iex > total.(100,8)
+	8.0
+	
+	iex > total.(100,nil)
+	** (ArithmeticError) bad argument in arithmetic expression: 100 * nil
+   	:erlang.*(100, nil)
+	
+	iex > total.(100,nil)
+	** (ArithmeticError) bad argument in arithmetic expression: 100 * nil
+   	:erlang.*(100, nil)
+	
+	- Independente de quantas vezes for chamada a funcao com os mesmos parametros, o resultado sempre será o mesmo.
+	- Os resultados são previsíveis e não alteram nada fora do escopo da função.
+	- Portanto, a funcao acima `total` é uma função pura. AMEN! :)
+	
+  Funções impuras ("qual será o resultado da função?")
+	
+	- Função impura é aquela função que não se consegue "prever" seu resultado. NAO EXISTE PREVISIBILIDADE.
+	- Também são aquelas que refereciam valores que não estão em seus argumentos.
+	- Função impura é aquela função que tem efeitos colaterais.
+	- É impuro manipular valores fora do escopo.
+	- Impuro a mudança de estados globais em uma aplicação.
+	- É impuro também inserção ou busca de linhas em um BD.
+	- É impuro acesso a uma API (por ser fora do escopo).
+	
+	- Exemplo de função impura:
+	iex(1)> IO.gets("O palmeiras tem mundial? \n")
+		O palmeiras tem mundial?
+		Nao
+		"Nao\n"
+		
+	iex(2)> IO.gets("O palmeiras tem mundial? \n")
+		O palmeiras tem mundial?
+		Sim
+		"Sim\n"
+	
+	- Se for chamada a mesma função `IO.gets` com o mesmo parametro `O palmeiras tem mundial?`, o resultado poderá ser diferente.
+	- Será que o Palmeiras tem mundial? Eu acho que não. Mas um palmeirense pode dizer que sim. 🤔
+	
+	- Outro exemplo de função impura:
+		iex > DateTime.utc_now()
+		~U[2021-12-29 16:57:31.122902Z]
+		
+		iex > DateTime.utc_now()
+		~U[2021-12-29 16:58:24.449155Z]
+		
+	- Chamada de função é a mesma, porém com resultados diferentes. DateTime é uma função impura.
+	
+	Outro exemplo:
+		- Aqui a função está usando uma variavel fora do escopo da função.
+		- Porém, por imutabilidade ela se mantém pura (mesmo output).
+		
+		iex(1) > percent = 10
+		iex(2) > total = &(&1 * percent/100)
+		
+		iex(3) > total.(100)
+		10.0
+		
+		iex(4) > percent = 8 # apesar do valor de percent ser alterado, se mantém a mesma saida, por isso fn pura.
+		iex(5) > total.(100)
+		10.0
+		
+	Outro exemplo importante: 
+	
+	iex > total = fn val,perc -> total = val * perc/100
+	iex > IO.puts(total)
+	iex > total
+	
+	iex > total.(100,10)
+	10.0
+	10.0
+	
+	iex > total.(100,10)
+	10.0
+	10.0
+	
+	- O resultado é sempre o mesmo, portanto é uma função pura, certo? ERRADO.
+	Por se utilizar de IO.puts(), é uma função IMPURA.
+	Pode ser que o usuário que esteja executando esse código não tenha acesso ao puts() do IO.
+	Logo, o resultado pode ser diferente. Tem efeitos colaterais.
+	
+	Resumo:
+		- É dado mais prioridade a funções puras por questões de previsibilidade do código, tornando-o mais fácil de se manter.
+		- Porém, funcoes impuras sao importantes pois são elas que interagem com o "mundo externo".
+		- Ambas devem ser utilizadas, funcoes impuras e puras.
+	
+   Controle de fluxo
+   
+   	- Controle de fluxo mais tradicional: `ìf`.
+	- No Elixir, possui o 'unless' (if negado).
+	
+	unless x == 10 do
+		"O x nao é igual a 10"
+	else
+		"O x é igual a 10"
+	end
+	
+	- Permitida a forma reduzida (one-liner):
+	if x == 10, do: "é igual a 10" else: "nao é igual a 10"
+	if true, do: 1 + 2
+	if false, do: :tiago else: :murilo
+	
+	Cond 
+	
+	iex > cond do
+	... > 2 + 4 === 5 -> "Isso nao eh verdade"
+	... > 2 + 3 === 6 -> "Isso tambem nao e verdade"
+	... > 2 + 2 === 4 -> "Ok, voce acertou!"
+	... > end
+	"Ok, voce acertou!"
+	
+	Case
+		- Case tenta casar um valor com vários padroes até encontrarmos um que corresponda e de "match".
+		
+		iex > case :palmeiras do
+		... > :mundial -> "Isso nao casa com o palmeiras 🏆"	
+		... > 10 -> "Isso muito menos"
+		... > 1951 -> "Estou ficando cansado.."
+		... > :palmeiras -> "Ok, voce casou :palmeiras com :palmeiras"
+		... > _ -> ":palmeiras nao é underscore, mas underscore é um coringa"
+		... > end
+		"Ok, voce casou :palmeiras com :palmeiras"	   
+	      
+   Ranges e Enum.map()
+   	
+	- Range implementa o módulo Enumerable.
+	- Enum prove um set de algoritmos pra ser trabalhado com o module de Enumerable.
+	- Enum.map() retorna uma lista onde cada item é o resultado da funcao que foi invocada no enumerable.
+	
+	Range
+	  iex > range = 1..5
+	  iex > Enum.map(range, fn x -> x * 2 end)
+	  [2,4,6,8,10]
+	  
+   Lazy Evaluation (Enum.take e Stream)
+   
+    	- Enum.take permite que peguemos uma certa quantidade de elementos de uma coleção.
+	iex > range = 1..9
+	iex > Enum.take(range, 3)
+	[1,2,3]
+	
+	Uma alternativa:
+	
+	 1..9
+	 |> Enum.take(3)
+	# [1,2,3]
+	
+	- Necessitamos gerar um range de 5 milhões de itens.
+	- Elixir cria apenas uma referencia do primeiro e ultimo valor do range (neste caso, 1 e 5_000_000)
+	- Mas e se precisamos percorrer por esse range?
+	
+	iex > range = 1..5_000_000
+	iex > Enum.map(range, &(&1)) |> Enum.take(10)
+	[1,2,3,4,5,6,7,8,9,10] # demora para pegar os elementos e carregar na memória
+	
+	- Mas e se o número for 10 milhoes, 20 milhoes, arquivo de 50GB? situacoes mais criticas? Vai gargalar.
+	- Solução é usar Lazy Evaluation (carregamento lento).
+	
+  Stream e Lazy Evalution (definicao)
+  
+	- Lazy evaluation é carregar instruções apenas quando ela for necessária/executada.
+	- Nos permite trabalhar com coleções na qual não sabemos o tamanho (coleções gigantes).
+	- O módulo Stream nos permite com trabalhar com grande quantidade de dados.
+	- Caso de uso: aplicação web que recebe requisicoes a todo tempo.
+	
+	iex > range = 1..5_000_000
+	iex > Stream.map(range, &(&1)) |> Enum.take(10)
+	Instrucao com Stream extremamente rápida, pois só carrega na memória o que o Enum.take(10) precisa.
+	
+	
+	
+	
+		
+	
