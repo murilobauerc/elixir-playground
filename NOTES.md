@@ -597,8 +597,33 @@ Elixir:
 	iex > Stream.map(range, &(&1)) |> Enum.take(10)
 	Instrucao com Stream extremamente rápida, pois só carrega na memória o que o Enum.take(10) precisa.
 	
+  Structs
+  
+  	- Structs sao mapas especiais com um conjunto de chaves e valores padrões.
+	- Deve ser definido dentro de um módulo, no qual leva o nome dele.
+  
+  	defmodule User do
+		defstruct name: "murilo", age: 23
+	end
+	
+	iex > usuario = %User{name: Usuario 1, age: 32}
+	%User{name: Usuario 1, age: 32}
+	
+	iex > usuario.name
+	"Usuario 1"
+	
+	iex > usuario = %{ usuario | name: "Veller", age: 39}
+	
+	- Enforce keys: voce obrigatoriamente determina que um campo especifico necessita ser definido.
+	
+	@enforce_keys[:name]
+	defmodule User do
+		defstruct name: "murilo", age: 23
+	end
 	
 	
+  END OF SECTION 2 (https://www.udemy.com/course/programacao-funcional-com-elixir/)
+  
 	
-		
+	
 	
