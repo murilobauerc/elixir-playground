@@ -380,6 +380,29 @@ Elixir:
 		def fat(0), do: 1
 		def fat(n) when n > 0, do: n * fat(n-1)
 	end
+
+   Recursão com Funções Anônimas 
+   
+   	- Função anônima envolvendo uma outra função anônima.
+	
+	- A função fact_gen abaixo sabe como construir uma função de fatorial.
+	- É esperado que seja passado como argumento ela mesmo (neste caso, `me`).
+	- O resultado é que faz a função anônima conseguir produzir a função fatorial em memória.
+	- Antes do uso, necessita ser gerada em memória a função de fatorial (fact_gen).
+		
+	fact_gen = fn me ->
+		fn 
+			0 -> 1
+			x when x > 0 x * me.(me).(x-1)
+		end
+	end
+	
+	iex > factorial = fact_gen.(fact_gen)
+	iex > factorial.(5)
+	120
+	
+	iex > factorial.(10)
+	3628800
 	
 
    Tail-Call Optimization
