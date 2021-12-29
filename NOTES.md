@@ -359,6 +359,39 @@ Elixir:
 	16
 	
 	
+   Guard Clauses
+   	
+	- Utilizar guard clauses com when na assinatura da funcao.
+	
+	defmodule Sum do
+		def to(1), do: 1
+		def to(n) when n > 0 and is_integer(n), do: n + to (n-1)
+	end
+  
+   Recursão 
+  
+  	- Uma função recursiva é aquela que chama a si própria.
+	- Em programação funcional temos estados imutáveis, então é importante que seja feito recursão.
+	- Identificar duas coisas antes de se fazer programas recursivos:
+		1. Ponto de Parada (quando a recursão irá parar?)
+		2. Regra Geral (resolução de subproblemas até ser resolvido o problema maior)
+	
+	defmodule Fatorial do
+		def fat(0), do: 1
+		def fat(n) when n > 0, do: n * fat(n-1)
+	end
 	
 
+   Tail-Call Optimization
+   	
+	- Tail-Call optimization é qunado o compilador reduz as funções em memória sem alocar mais memória.
+	- O negativo de usar essa técnica é a leitura do código, no qual fica mais complexo.
+	- O positivo é que evita com que a memória "pendure" chamadas de funções para serem resolvidas, melhorando a performance.
 	
+	- Exemplo:
+		defmodule TCFactorial do
+			def of(n), do: factorial_of(n, 1)
+			
+			defp factorial_of(0, acc) do: acc
+			defp factorial_of(n, acc) when n > 0, do: factorial_of(n-1, n * acc)
+		end
