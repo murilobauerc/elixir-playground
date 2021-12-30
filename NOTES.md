@@ -624,6 +624,15 @@ Elixir:
 	
   END OF SECTION 2 (https://www.udemy.com/course/programacao-funcional-com-elixir/)
   
+	----------------------	-------------------	-------------------	-------------------	-------------------	-------------------	
 	
+  BEGINNING OF SECTION 3
+  
+  Mix
+  
+  	- Mix é uma CLI que fornece "tasks" pra voce criar, compilar e testar projetos Elixir.
+	- Possivel gerenciar dependencias com Mix.
+	
+	Exemplo: Criar um CRUD para uma aplicacao pequena de agenda/contatos.
 	
 	
