@@ -21,18 +21,8 @@ defmodule HighScore do
     Map.update(scores, name, score, fn prev -> prev + score end)
   end
 
-  # my own solution
-  def get_players(scores) do
-    scores
-    |> Map.to_list()
-    |> Enum.map(fn {key, _} -> key end)
-  end
-
-  '''
-  after research, better solution
   def get_players(scores)
     Map.keys(scores)
-  '''
 
   def get_players(_) do
     []
