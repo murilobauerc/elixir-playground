@@ -1,5 +1,23 @@
 Elixir:
-1. iex (interactive elixir):
+
+1. Documentation in Elixir is a first-class citizen.
+
+**@moduledoc** - for documenting a module
+
+**@doc** - for documenting a function
+
+**@spec** - type specification for a function 
+<p>@spec function_name(type1, type2) :: return_type</p>
+
+**Examples:** 
+
+@spec blanks(non_neg_integer) :: String.t()
+
+def blanks(n) do
+	String.duplicate(“X”, n)
+end
+
+2. iex (interactive elixir):
     * IEx.Helpers
     * iex > h()  - chama o modulo helper
     * iex > h(Enum) - chama o modulo helper pro Enum
@@ -12,7 +30,7 @@ Elixir:
     * CTRL C + Q + ENTER - quita do iex
     * CTRL + K - clear no console do iex
 
-2. TUDO é uma expressão!
+3. TUDO é uma expressão! tudo retorna algo :)
     * iex > IO.puts(“Hello”)
     
 		Hello World
