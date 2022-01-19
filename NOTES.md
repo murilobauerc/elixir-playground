@@ -342,7 +342,6 @@ end
 	
 	iex(3) > x.b
 	"bauer"
-	
     
    Múltiplas Definições de Funções 
    
