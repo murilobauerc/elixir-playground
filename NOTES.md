@@ -1,4 +1,4 @@
-Elixir:
+Notes Elixir:
 
 1. Documentation in Elixir is a first-class citizen.
 
@@ -342,7 +342,6 @@ end
 	
 	iex(3) > x.b
 	"bauer"
-	
     
    Múltiplas Definições de Funções 
    
