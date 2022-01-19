@@ -1,10 +1,9 @@
 Repository to serve as a playground for Elixir. 👨‍🔬
 
-
 Elixir is a dynamic, functional language for building scalable and maintainable applications.
 Elixir leverages the Erlang VM, known for running low-latency, distributed, and fault-tolerant systems.
 
-### dev environment setup for Elixir
+### Development environment setup for Elixir
 - Elixir v1.12
 - VSCode IDE 1.61.1
 - ElixirLS extension to include Elixir support and debugger
@@ -33,6 +32,3 @@ Elixir leverages the Erlang VM, known for running low-latency, distributed, and 
 
 ### Basics
 <https://elixirschool.com/en/lessons/basics/basics>
-
-## Scripted Mode
-<https://elixir-lang.org/getting-started/modules-and-functions.html#scripted-mode>
