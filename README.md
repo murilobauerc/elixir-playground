@@ -9,6 +9,7 @@ Elixir leverages the Erlang VM, known for running low-latency, distributed, and 
 - ElixirLS extension to include Elixir support and debugger
 >  For Elixir Language Server (Elixir LS) install the extension: https://marketplace.visualstudio.com/items?itemName=JakeBecker.elixir-ls
 
+
 # Table of contents
 
 * [Installation](#installation)
